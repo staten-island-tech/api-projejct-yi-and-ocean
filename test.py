@@ -1,5 +1,5 @@
 import json
-import pip._vendor.requests as requests
+import requests
 
 input = 'god'
 # input = input('enter word here omg')
