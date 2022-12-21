@@ -28,6 +28,11 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route('/')
     def hello():
-        return 'Hello, World!'
+        return render_template('index.html')
+    @app.route('/word/<path:search>')
+    def search(search):
+        return render_template()
+            
+#'word.html', word=getDict(search)'
 
     return app
