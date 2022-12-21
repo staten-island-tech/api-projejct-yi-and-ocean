@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, render_template
-from flaskr.static.lib.func import getDict
+from flaskr.static.lib.func import getWord, BasicForm
 
 
 def create_app(test_config=None):
@@ -29,8 +29,10 @@ def create_app(test_config=None):
     @app.route('/')
     def hello():
         return render_template('index.html')
-    @app.route('/word/<path:search>')
-    def search(search):
-        return render_template('word.html', word=getDict(search))
+    @app.route('/word/<path:search>', methods =["GET", "POST"])
+    def word(search):
+        form = BasicForm()
+
+        return render_template('word.html', word=getWord(form))
 
     return app
