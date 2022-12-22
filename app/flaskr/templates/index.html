@@ -1,2 +1,13 @@
-{{extends "base.html"}}
+{extends "base.html" %}
 {% block title%}Dictionary{% endblock %}
+
+% block body %
+
+<form action="{{ url_for('word')}} method="post">
+    <form action="/search" method"POST">
+        {{form.csfr_token}}
+        {{form.ids}}
+        {{form.submit}}
+    </form>
+{% endblock %}
+

@@ -2,8 +2,6 @@ import os
 
 from flask import Flask, render_template
 
-
-
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
@@ -29,10 +27,10 @@ def create_app(test_config=None):
     @app.route('/')
     def hello():
         return render_template('index.html')
-    @app.route('/word/<path:search>')
-    def search(search):
+
+    @app.route('/word/<path:search>', methods =["GET", "POST"])
+    def word(search):
+
         return render_template()
-            
-#'word.html', word=getDict(search)'
 
     return app
