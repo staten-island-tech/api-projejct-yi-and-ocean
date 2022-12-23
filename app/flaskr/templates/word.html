@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    {{word}}
+    {% for item in word %}
+    <h1>{{search}}</h1>
+    {{item.shortdef}}
+    {% endfor %}
 </body>
 </html>
