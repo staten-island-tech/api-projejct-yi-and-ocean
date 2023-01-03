@@ -1,12 +1,11 @@
-{extends "base.html" %}
-{% block title%}Dictionary{% endblock %}
+{% extends "base.html" %}
+{% block title %}Dictionary{% endblock %}
 
 {% block body %}
 
-<form action="{{ url_for('word'), search=a}}" method="post">
-    <form action="/search" method"POST">
-        <input type="text" name="searchForWord">
-        <input type="submit">
-    </form>
-{% endblock %}
+<form action="{{ url_for('word')}}" method="post">
+    <input type="text" name="searchForWord">
+    <input type="submit">
+</form>
 
+{% endblock %}

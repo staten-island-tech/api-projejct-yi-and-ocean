@@ -1,6 +1,7 @@
 import os
 
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, request
+from flaskr.static.lib.func import getWord
 
 def create_app(test_config=None):
     # create and configure the app
@@ -28,13 +29,13 @@ def create_app(test_config=None):
     def hello():
         return render_template('index.html')
 
-    @app.route('/word')
+    @app.route('/word', methods =["GET", "POST"])
     def word():
-        return redirect(url_for('/word/<path:search>'))
+        word=request.form['searchForWord']
+        return redirect('/word/'+ word)
 
     @app.route('/word/<path:search>', methods =["GET", "POST"])
-    def word(search):
-
-        return render_template('word.html', word=getWord(search))
+    def search(search):
+        return render_template('word.html', word=getWord(search), search=search)
 
     return app
