@@ -2,11 +2,20 @@
 {% block title %}Dictionary{% endblock %}
 
 {% block body %}
-
+<h2>Search for a word: </h2>
 <form action="{{ url_for('word')}}" method="post">
     <input type="text" name="searchForWord">
     <input type="submit">
 </form>
-<!-- https://www.w3schools.com/html/html_form_elements.asp
-use select element of form for sorting by noun, other, etc -->
+<!-- <h3>sort by letter:</h3>
+<form action="{{ url_for('letter') }}" method="post">
+    <label for="letters">Choose a letter to sort words by:</label>
+    <select name="letterSelector" id="letters">
+        {% for letter in letters %}
+        <option value="{{ letter }}">{{ letter }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" name="letter">
+</form> -->
+<h1>{{ word }}</h1>
 {% endblock %}
