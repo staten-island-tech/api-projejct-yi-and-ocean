@@ -40,6 +40,14 @@ def create_app(test_config=None):
     @app.route('/word/<path:search>', methods =["GET", "POST"])
     def search(search):
         result = getWord(search)
-        return  render_template(checkValidWord(result), word=result, search=search)
+        return  render_template(checkValidWord(result), word=result)
 
+    @app.route('/letter', methods =["GET", "POST"])
+    def letter():
+        letter=request.form[letterSelector]
+        return redirect('/letter/' + letter)
+
+    @app.route('/letter/<path:letter>', methods =["GET", "POST"])
+    def letterSort(letter):
+        return render_template('word.html', word=getWord(letter))
     return app

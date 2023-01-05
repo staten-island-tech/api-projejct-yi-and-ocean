@@ -2,10 +2,11 @@
 {% block title %}Dictionary{% endblock %}
 
 {% block body %}
-
+<h2>Search for a word: </h2>
 <form action="{{ url_for('word')}}" method="post">
     <input type="text" name="searchForWord">
     <input type="submit">
 </form>
 
+<h1
 {% endblock %}
