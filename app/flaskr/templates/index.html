@@ -7,15 +7,12 @@
     <input type="text" name="searchForWord">
     <input type="submit">
 </form>
-<!-- <h3>sort by letter:</h3>
-<form action="{{ url_for('letter') }}" method="post">
-    <label for="letters">Choose a letter to sort words by:</label>
-    <select name="letterSelector" id="letters">
-        {% for letter in letters %}
-        <option value="{{ letter }}">{{ letter }}</option>
-        {% endfor %}
-    </select>
-    <input type="submit" name="letter">
-</form> -->
-<h1>{{ word }}</h1>
+<h1>Random Word: </h1>
+{% for item in word %}
+<h1>{{item.hwi.hw}}</h1>
+<h3>{{ item.fl }}</h3>
+{% for def in item.shortdef %}
+<h4>{{ def }}</h4>
+{% endfor %}
+{% endfor %}
 {% endblock %}
