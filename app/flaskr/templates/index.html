@@ -8,5 +8,12 @@
     <input type="submit">
 </form>
 
-<h1
+<h1>Random word: </h1>
+{% for item in word %}
+<h1>{{item.hwi.hw}}</h1>
+<h3>{{ item.fl }}</h3>
+{% for def in item.shortdef %}
+<h4>{{ def }}</h4>
+{% endfor %}
+{% endfor %}
 {% endblock %}

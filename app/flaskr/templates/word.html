@@ -2,6 +2,16 @@
 {% block title %}Dictionary{% endblock %}
 
 {% block body %}
+<h3>Sort by category: </h3>
+<form action="{{ url_for('types') }}" method="post">
+    <label for="types">Choose:</label>
+    <select name="typeSelector" id="types">
+        {{ % for type in types %}}
+        <option value="{{ type }}">{{ type }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit">
+</form>
 
 {% for item in word %}
 <h1>{{item.hwi.hw}}</h1>
