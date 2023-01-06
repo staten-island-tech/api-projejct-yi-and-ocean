@@ -1,3 +1,3 @@
 def typesOfWords():
-    types = ['nouns', 'verbs', 'adverbs','adjectives', 'prepositions', 'conjunctions', 'articles', 'interjections']
+    types = ['noun', 'verb', 'adverb','adjective', 'preposition', 'conjunction', 'article', 'interjection']
     return types

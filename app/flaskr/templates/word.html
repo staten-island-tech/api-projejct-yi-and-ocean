@@ -13,12 +13,14 @@
     <input type="submit">
 </form>
 
+<h2>Currently sorting by: {{ type.type }}</h2>
+ 
+    {% for item in word %}
+    <h1>{{item.hwi.hw}}</h1>
+    <h3>{{ item.fl }}</h3>
+    {% for def in item.shortdef %}
+    <h4>{{ def }}</h4>
+    {% endfor %}
+    {% endfor %}
 
-{% for item in word %}
-<h1>{{item.hwi.hw}}</h1>
-<h3>{{ item.fl }}</h3>
-{% for def in item.shortdef %}
-<h4>{{ def }}</h4>
-{% endfor %}
-{% endfor %}
 {% endblock %}

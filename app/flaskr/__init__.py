@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, session
 from flaskr.static.library.func import *
 from flaskr.static.library.data import *
 
@@ -43,11 +43,15 @@ def create_app(test_config=None):
     @app.route('/word/<path:search>', methods =["GET", "POST"])
     def search(search):
         result = getWord(search)
-        return render_template(checkValidWord(result), word=result, types=typesOfWords())
+        session['word'] = search
+        args = request.args.to_dict()
+        print(args)
+        return render_template(checkValidWord(result), word=result, types=typesOfWords(), result=result, type = args)
     
     @app.route('/types', methods =["GET", "POST"])
     def types():
         wordType = request.form['typeSelector']
-        return redirect ('/word/
+        word = session.get('word')
+        return redirect ('/word/' + word + '?type=' + wordType)
     
     return app
