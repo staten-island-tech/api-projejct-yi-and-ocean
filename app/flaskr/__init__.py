@@ -1,7 +1,9 @@
 import os
-
-from flask import Flask, render_template, redirect, request
-from flaskr.static.lib.func import *
+import json
+import requests
+from flask import Flask, render_template, redirect, request, session
+from flaskr.static.library.func import *
+from flaskr.static.library.data import *
 
 def create_app(test_config=None):
     # create and configure the app
@@ -27,7 +29,7 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route('/')
     def hello():
-        return render_template('index.html')
+        return render_template('index.html', word=getWord(randomWord()))
 
     @app.route('/word', methods =["GET", "POST"])
     def word():
@@ -40,14 +42,6 @@ def create_app(test_config=None):
     @app.route('/word/<path:search>', methods =["GET", "POST"])
     def search(search):
         result = getWord(search)
-        return  render_template(checkValidWord(result), word=result)
-
-    @app.route('/letter', methods =["GET", "POST"])
-    def letter():
-        letter=request.form[letterSelector]
-        return redirect('/letter/' + letter)
-
-    @app.route('/letter/<path:letter>', methods =["GET", "POST"])
-    def letterSort(letter):
-        return render_template('word.html', word=getWord(letter))
-    return app
+        session['word'] = searchargs = request.args.to_dict()
+        print(args)
+        return render_template(checkValidWord(result), word=result, types=typesofWords(), result=result, types=args)

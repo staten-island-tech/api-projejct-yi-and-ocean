@@ -6,18 +6,21 @@
 <form action="{{ url_for('types') }}" method="post">
     <label for="types">Choose:</label>
     <select name="typeSelector" id="types">
-        {{ % for type in types %}}
+        {% for type in types %}
         <option value="{{ type }}">{{ type }}</option>
         {% endfor %}
     </select>
     <input type="submit">
 </form>
 
-{% for item in word %}
-<h1>{{item.hwi.hw}}</h1>
-<h3>{{ item.fl }}</h3>
-{% for def in item.shortdef %}
-<h4>{{ def }}</h4>
-{% endfor %}
-{% endfor %}
+<h2>Currently sorting by: {{ type.type }}</h2>
+
+    {% for item in word %}
+    <h1>{{item.hwi.hw}}</h1>
+    <h3>{{ item.fl }}</h3>
+    {% for def in item.shortdef %}
+    <h4>{{ def }}</h4>
+    {% endfor %}
+    {% endfor %}
+
 {% endblock %}
