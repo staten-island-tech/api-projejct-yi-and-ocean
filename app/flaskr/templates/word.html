@@ -12,9 +12,21 @@
     </select>
     <input type="submit">
 </form>
+<a href="../word/{{search}}"><button class="reset">Reset to None</button></a>
 
-<h2>Currently sorting by: {{ type.type }}</h2>
+{% if type %}
+<h2>Currently sorting by: {{ type }}</h2>
  
+    {% for item in word %}
+    {% if type in item.fl %}
+        <h1>{{item.hwi.hw}}</h1>
+        <h3>{{ item.fl }}</h3>
+        {% for def in item.shortdef %}
+        <h4>{{ def }}</h4>
+        {% endfor %}
+    {% endif %}
+    {% endfor %}
+{% else %}
     {% for item in word %}
     <h1>{{item.hwi.hw}}</h1>
     <h3>{{ item.fl }}</h3>
@@ -22,5 +34,5 @@
     <h4>{{ def }}</h4>
     {% endfor %}
     {% endfor %}
-
+{% endif %}
 {% endblock %}

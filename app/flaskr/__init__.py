@@ -46,7 +46,11 @@ def create_app(test_config=None):
         session['word'] = search
         args = request.args.to_dict()
         print(args)
-        return render_template(checkValidWord(result), word=result, types=typesOfWords(), result=result, type = args)
+        if args:
+            type = args['type']
+        else:
+            type = None
+        return render_template(checkValidWord(result), word=result, types=typesOfWords(), search=search, type = type)
     
     @app.route('/types', methods =["GET", "POST"])
     def types():

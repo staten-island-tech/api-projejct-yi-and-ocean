@@ -1,0 +1,30 @@
+html,
+body,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-family: 'Sofia Sans Semi Condensed', sans-serif;
+}
+
+.home {
+    padding: 10px;
+}
+
+.title {
+    font-size: 50px;
+    margin: auto;
+}
+
+.wordName {
+    font-size: 41px;
+}
+
+.wordType {
+    font-size: 25px;
+}
+
+.wordDef {
+    font-size: 30px;
+}
