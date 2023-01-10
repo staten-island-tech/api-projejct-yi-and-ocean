@@ -2,18 +2,20 @@
 {% block title %}Dictionary{% endblock %}
 
 {% block body %}
-<h2>Search for a word: </h2>
+<p class "title">Search for a word: </p>
 <form action="{{ url_for('word')}}" method="post">
     <input type="text" name="searchForWord">
     <input type="submit">
 </form>
 
-<h1>Random word: </h1>
+<p class "title">Random word: </p>
+
 {% for item in word %}
-<h1>{{item.hwi.hw}}</h1>
-<h3>{{ item.fl }}</h3>
+<p class"wordName">{{item.hwi.hw}}</p>
+<p class"wordType">{{ item.fl }}</p>
 {% for def in item.shortdef %}
-<h4>{{ def }}</h4>
+<p class"wordDef">{{ def }}</p>
+
 {% endfor %}
 {% endfor %}
 {% endblock %}

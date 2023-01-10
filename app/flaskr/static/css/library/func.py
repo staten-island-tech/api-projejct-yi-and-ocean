@@ -10,5 +10,21 @@ def getWord(Search):
 def checkValidWord(word):
     if word == []:
         return '404.html'
+    else:
+        try:
+            if word[0]['shortdef']:
+                return 'word.html'
+        except:
+            return '404.html'
 
+def randomWord():
+    done == False
+    while done == False: 
+        randomWord = requests.get('https://random-word-api.herokuapp.com/word?number=1').json()
+        defOfWord: getWord(randomWord)
+        if defOfWord == []:
+            pass
+        else:
+            done = True
+            return defOfWord[0]
 
