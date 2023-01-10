@@ -1,11 +1,11 @@
 html,
 body,
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: black;
-  font-family: 'Sofia Sans Semi Condensed', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-family: 'Sofia Sans Semi Condensed', sans-serif;
 }
 
 .home {
@@ -27,4 +27,14 @@ body,
 
 .wordDef {
     font-size: 30px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: left;
+    width: 100vw;
+}
+
+.card {
+    border: 5px solid black
 }
