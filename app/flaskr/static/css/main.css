@@ -6,10 +6,17 @@ body,
     padding: 0;
     color: black;
     font-family: 'Sofia Sans Semi Condensed', sans-serif;
+    background-color: #f3f3f3;
 }
 
 .home {
-    padding: 10px;
+    text-decoration: none;
+    padding: 14px;
+    font-size: 40px;
+    display: block;
+    color: white;
+    background-color: #00248b;
+    box-shadow: 0 2px 4px 3px rgba(255, 255, 255, 0.6);
 }
 
 .title {
@@ -17,24 +24,30 @@ body,
     margin: auto;
 }
 
-.wordName {
+.randomWord {
     font-size: 41px;
 }
 
-.wordType {
+.randomType {
     font-size: 25px;
 }
 
-.wordDef {
+.randomDef {
     font-size: 30px;
 }
 
 .flex-container {
     display: flex;
-    justify-content: left;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
     width: 100vw;
+    row-gap: 20px;
 }
 
 .card {
-    border: 5px solid black
+    border: 5px solid black;
+    width: 90vw;
+    padding: 10px; 
+    margin-left: 14px;
 }

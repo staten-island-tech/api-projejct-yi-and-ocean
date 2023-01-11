@@ -15,36 +15,41 @@
 <a href="../word/{{search}}"><button class="reset">Reset to None</button></a>
 <h2>Currently sorting by: {{ type }}</h2>
 
-<flex class="flex-container">
 
-    {% if type in types %}
+{% if type in types %}
 
+<div class="flex-container">
+    {% for item in word %}
 
-        {% for item in word %}
-        <card class="card">
+    {% if type in item.fl %}
+    <div class="card">
 
-            {% if type in item.fl %}
-
-                <h1>{{item.hwi.hw}}</h1>
-                <h3>{{ item.fl }}</h3>
-                {% for def in item.shortdef %}
-                    <h4>{{ def }}</h4>
-                {% endfor %}
-            {% endif %}
-        </card>
-
+        <p>{{item.hwi.hw}}</p>
+        <p>{{ item.fl }}</p>
+        {% for def in item.shortdef %}
+        <p>{{ loop.index }}. {{ def }}</p>
         {% endfor %}
-    {% else %}
-        {% for item in word %}
-        <card class="card">
-            <h1>{{item.hwi.hw}}</h1>
-            <h3>{{ item.fl }}</h3>
-            {% for def in item.shortdef %}
-                <h4>{{ def }}</h4>
-            {% endfor %}
-        {% endfor %}
-    </card>
+    </div>
+
     {% endif %}
-</flex>
+
+    {% endfor %}
+</div>
+{% else %}
+<div class="flex-container">
+
+    {% for item in word %}
+    <div class="card">
+        <p>{{item.hwi.hw}}</p>
+        <p>{{ item.fl }}</p>
+        {% for def in item.shortdef %}
+        <p>{{ loop.index }}. {{ def }}</p>
+        {% endfor %}
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endif %}
 
 {% endblock %}

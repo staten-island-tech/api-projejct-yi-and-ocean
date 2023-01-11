@@ -9,10 +9,10 @@
 </form>
 <p class="title">Random Word: </p>
 {% for item in word %}
-<p class="wordName">{{item.hwi.hw}}</p>
-<p class="wordType">{{ item.fl }}</p>
+<p class="randomWord">{{item.hwi.hw}}</p>
+<p class="randomType">{{ item.fl }}</p>
 {% for def in item.shortdef %}
-<p class="wordDef">{{ def }}</p>
+<p class="randomDef">{{ def }}</p>
 {% endfor %}
 {% endfor %}
 {% endblock %}
