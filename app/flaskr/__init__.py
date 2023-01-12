@@ -30,18 +30,14 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route('/')
     def hello():
-        print('Hello World!')
         return render_template('index.html', word=getWord(randomWord()))
     
     @app.route('/word', methods =["GET", "POST"])
     def word():
         word=request.form['searchForWord']
-        print('searching for word: ' + word)
         if word:
-            print('Redirecting to: /word/' + word)
             return redirect('/word/'+ word )
         else:
-            print('User reached 404 page.')
             return render_template('404.html')
     
     @app.route('/word/<path:search>', methods =["GET", "POST"])
@@ -49,20 +45,16 @@ def create_app(test_config=None):
         result = getWord(search)
         session['word'] = search
         args = request.args.to_dict()
-        print('Accessing query args...')
         if args:
             type = args['type']
-            print('Args found:' + args)
         else:
             type = None
-            print('No args found.')
         return render_template(checkValidWord(result), word=result, types=typesOfWords(), search=search, type = type)
     
     @app.route('/types', methods =["GET", "POST"])
     def types():
         wordType = request.form['typeSelector']
         word = session.get('word')
-        print('Redirecting user to: ' + '/word/' + word + '?type=' + wordType)
         return redirect ('/word/' + word + '?type=' + wordType)
     
     return app

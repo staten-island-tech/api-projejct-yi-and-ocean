@@ -6,7 +6,7 @@ body,
     padding: 0;
     color: black;
     font-family: 'Sofia Sans Semi Condensed', sans-serif;
-    background-color: #f3f3f3;
+    background-color: #bbbbbb;
 }
 
 .home {
@@ -16,12 +16,24 @@ body,
     display: block;
     color: white;
     background-color: #00248b;
-    box-shadow: 0 2px 4px 3px rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 4px 5px 3px rgba(0, 36, 139, 0.6);
+    margin-bottom: 20px;
+    transition: 0.3s all;
+    text-align: center;
+}
+
+.home:hover {
+    background-color: #bbbbbb;
+    color: black;
+    box-shadow: 0px 4px 5px 3px rgba(187, 187, 187, 0.6);
+    transform: translate3D(0, -1px, 0) scale(1.03);
+    text-decoration: underline;
 }
 
 .title {
     font-size: 50px;
     margin: auto;
+    display: inline;
 }
 
 .randomWord {
@@ -50,4 +62,41 @@ body,
     width: 90vw;
     padding: 10px; 
     margin-left: 14px;
+}
+
+.form {
+    display: inline;
+    align-self: center;
+}
+
+.search-container {
+    display: inline;
+    font-size: 50px;
+}
+
+#wordSearch {
+    color: black;
+    font-size: inherit;
+}
+
+#wordSearch:focus {
+    background-color: white;
+}
+
+#wordSubmit {
+    color: black;
+    font-size: inherit;
+    transition: 0.3s all;
+}
+
+#wordSubmit:hover {
+    background-color: white;
+}
+
+#random {
+    display: block;
+}
+
+.notFound {
+    font-size: 50px;
 }
