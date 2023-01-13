@@ -27,4 +27,3 @@ def randomWord():
         else:
             done = True
             return defOfWord[0]
-
