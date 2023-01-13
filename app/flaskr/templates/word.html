@@ -1,18 +1,19 @@
 {% extends "base.html" %}
-{% block title %}Dictionary{% endblock %}
+{% block title %}{{ search }}{% endblock %}
 
 {% block body %}
-<h3>Sort word by category :</h3>
-<form action="{{ url_for('types') }}" method="post">
-    <label for="types">Choose:</label>
-    <select name="typeSelector" id="types">
-        {% for type in types %}
-        <option value="{{ type }}">{{ type }}</option>
-        {% endfor %}
-    </select>
-    <input type="submit">
+<p class="title">Sort word by category :</p>
+<form class="form" action="{{ url_for('types') }}" method="post">
+    <div class="search-container">
+        <select class="wordSearch" name="typeSelector" id="types">
+            {% for type in types %}
+            <option class='select option' value="{{ type }}">{{ type }}</option>
+            {% endfor %}
+        </select>
+        <input class="wordSubmit" type="submit">
+    </div>
 </form>
-<a href="../word/{{search}}"><button class="reset">Reset to None</button></a>
+<a href="../word/{{search}}"><button class="reset select">Reset to None</button></a>
 <h2>Currently sorting by: {{ type }}</h2>
 
 
@@ -24,10 +25,10 @@
     {% if type in item.fl %}
     <div class="card">
 
-        <p>{{item.hwi.hw}}</p>
-        <p>{{ item.fl }}</p>
+        <p class="wordName">{{item.hwi.hw}}</p>
+        <p class="wordType">{{ item.fl }}</p>
         {% for def in item.shortdef %}
-        <p>{{ loop.index }}. {{ def }}</p>
+        <p class="wordDef">{{ loop.index }}. {{ def }}</p>
         {% endfor %}
     </div>
 
@@ -40,10 +41,10 @@
 
     {% for item in word %}
     <div class="card">
-        <p>{{item.hwi.hw}}</p>
-        <p>{{ item.fl }}</p>
+        <p class="wordName">{{item.hwi.hw}}</p>
+        <p class="wordType">{{ item.fl }}</p>
         {% for def in item.shortdef %}
-        <p>{{ loop.index }}. {{ def }}</p>
+        <p class="wordDef">{{ loop.index }}. {{ def }}</p>
         {% endfor %}
     </div>
 

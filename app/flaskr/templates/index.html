@@ -3,13 +3,14 @@
 
 {% block body %}
 <p class="title">Search for a word: </p>
-<form class='form' action="{{ url_for('word')}}" method="post">
+<form class='form' action="{{ url_for('search')}}" method="post">
     <div class="search-container">
-        <input id="wordSearch" type="text" name="searchForWord">
-        <input id="wordSubmit" type="submit" value="Search!">
+        <input class="wordSearch" type="text" name="searchForWord">
+        <input class="wordSubmit" type="submit" value="Search!">
     </div>
 </form>
 <p class="title" id="random">Random Word: </p>
+<div class="random-container">
 {% for item in word %}
 <p class="randomWord">{{item.hwi.hw}}</p>
 <p class="randomType">{{ item.fl }}</p>
@@ -17,4 +18,5 @@
 <p class="randomDef">{{ def }}</p>
 {% endfor %}
 {% endfor %}
+</div>
 {% endblock %}

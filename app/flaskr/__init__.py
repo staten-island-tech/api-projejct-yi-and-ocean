@@ -32,29 +32,29 @@ def create_app(test_config=None):
     def hello():
         return render_template('index.html', word=getWord(randomWord()))
     
-    @app.route('/word', methods =["GET", "POST"])
-    def word():
+    @app.route('/search', methods =["GET", "POST"])
+    def search():
         word=request.form['searchForWord']
         if word:
-            return redirect('/word/'+ word )
+            return redirect('/search/'+ word )
         else:
             return render_template('404.html')
     
-    @app.route('/word/<path:search>', methods =["GET", "POST"])
-    def search(search):
+    @app.route('/search/<path:search>', methods =["GET", "POST"])
+    def result(search):
         result = getWord(search)
         session['word'] = search
         args = request.args.to_dict()
         if args:
-            type = args['type']
+            wordType = args['type']
         else:
-            type = None
-        return render_template(checkValidWord(result), word=result, types=typesOfWords(), search=search, type = type)
+            wordType = None
+        return render_template(checkValidWord(result), word=result, types=typesOfWords(), search=search.capitalize() , type = wordType)
     
     @app.route('/types', methods =["GET", "POST"])
     def types():
         wordType = request.form['typeSelector']
         word = session.get('word')
-        return redirect ('/word/' + word + '?type=' + wordType)
+        return redirect ('/search/' + word + '?type=' + wordType)
     
     return app

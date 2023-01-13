@@ -18,7 +18,7 @@ body,
     background-color: #00248b;
     box-shadow: 0px 4px 5px 3px rgba(0, 36, 139, 0.6);
     margin-bottom: 20px;
-    transition: 0.3s all;
+    transition: 0.729s all;
     text-align: center;
 }
 
@@ -74,29 +74,75 @@ body,
     font-size: 50px;
 }
 
-#wordSearch {
+.wordSearch {
     color: black;
     font-size: inherit;
+    border: 2px solid black;
+    transition: 0.3s all;
 }
 
-#wordSearch:focus {
+.wordSearch:hover {
     background-color: white;
 }
 
-#wordSubmit {
+.wordSubmit {
     color: black;
     font-size: inherit;
     transition: 0.3s all;
 }
 
-#wordSubmit:hover {
+.wordSubmit:hover {
     background-color: white;
 }
 
 #random {
     display: block;
+    margin-top: 7%;
 }
 
 .notFound {
     font-size: 50px;
+}
+
+.random-container {
+    border: 5px solid black;
+}
+
+.wordName {
+    font-size: 41px;
+    font-weight: 569;
+}
+
+.wordType {
+    font-size: 25px;
+}
+
+.wordDef {
+    font-size: 35px;
+}
+
+.select {
+    font-size: inherit;
+}
+
+.reset {
+    font-size: 50px;
+    transition: 0.3s all;
+}
+
+.reset:hover {
+    background-color: white;
+}
+
+#types:hover {
+    background-color: #bbbbbb;
+    transition: 0s;
+}
+
+#types:focus {
+    background-color: white;
+}
+
+.option {
+    background-color: white;
 }
