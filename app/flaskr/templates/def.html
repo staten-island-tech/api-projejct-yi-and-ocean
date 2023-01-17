@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}{{ search }}{% endblock %}
+
+{% block body %}
+<p class="title">Sort word by category :</p>
+<form class="form" action="{{ url_for('types') }}" method="post">
+    <div class="search-container">
+        <select class="wordSearch" name="typeSelector" id="types">
+            {% for type in types %}
+            <option class='select option' value="{{ type }}">{{ type }}</option>
+            {% endfor %}
+        </select>
+        <input class="wordSubmit" type="submit">
+    </div>
+</form>
+<a href="../search/{{search}}"><button class="reset select">Reset to None</button></a>
+<h2>Currently sorting by: {{ type }}</h2>
+
+
+{% if type in types %}
+
+<div class="flex-container">
+    {% for item in word %}
+
+    {% if type in item.fl %}
+    <a href="../word/{{search}}" class="more">
+        <div class="card">
+            {% set subdirectory = item.hwi.hw[0] %}
+
+            <p class="wordName">{{item.hwi.hw}}</p>
+            <p>https://media.merriam-webster.com/audio/prons/en/us/mp3/{{ subdirectory }}/{{ item.hwi.prs[0].sound.audio }}.mp3</p>
+            <p class="wordType">{{ item.fl }}</p>
+            {% for def in item.shortdef %}
+            <p class="wordDef">{{ loop.index }}. {{ def }}</p>
+            {% endfor %}
+        </div>
+    </a>
+
+    {% endif %}
+
+    {% endfor %}
+</div>
+{% else %}
+<div class="flex-container">
+
+    {% for item in word %}
+    <a href="../word/{{search}}" class="more">
+        <div class="card">
+            {% set subdirectory = item.hwi.hw[0] %}
+
+            <p class="wordName">{{item.hwi.hw}}</p>
+            <p>https://media.merriam-webster.com/audio/prons/en/us/mp3/{{ subdirectory }}/{{ item.hwi.prs }}.mp3</p>
+            <p class="wordType">{{ item.fl }}</p>
+            {% for def in item.shortdef %}
+            <p class="wordDef">{{ loop.index }}. {{ def }}</p>
+            {% endfor %}
+        </div>
+    </a>
+
+    {% endfor %}
+</div>
+
+{% endif %}
+
+{% endblock %}
