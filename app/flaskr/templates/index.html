@@ -1,7 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Dictionary{% endblock %}
+{% block title %}Dictionary API{% endblock %}
 
 {% block body %}
+<div class="searchForWord">
 <p class="title">Search for a word: </p>
 <form class='form' action="{{ url_for('search')}}" method="post">
     <div class="search-container">
@@ -9,14 +10,15 @@
         <input class="wordSubmit" type="submit" value="Search!">
     </div>
 </form>
+</div>
 <p class="title" id="random">Random Word: </p>
 <div class="random-container">
-{% for item in word %}
-<p class="randomWord">{{item.hwi.hw}}</p>
-<p class="randomType">{{ item.fl }}</p>
-{% for def in item.shortdef %}
-<p class="randomDef">{{ def }}</p>
-{% endfor %}
-{% endfor %}
+    {% for item in word %}
+    <p class="randomWord">{{item.hwi.hw}}</p>
+    <p class="randomType">{{ item.fl }}</p>
+    {% for def in item.shortdef %}
+    <p class="randomDef">{{ def }}</p>
+    {% endfor %}
+    {% endfor %}
 </div>
 {% endblock %}
