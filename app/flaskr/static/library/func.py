@@ -17,7 +17,7 @@ def checkValidWord(word):
     else:
         try:
             if word[0]['shortdef']:
-                return 'word.html'
+                return 'def.html'
         except:
             return '404.html'
 

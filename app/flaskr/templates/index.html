@@ -1,18 +1,24 @@
 {% extends "base.html" %}
-{% block title %}Dictionary{% endblock %}
+{% block title %}Dictionary API{% endblock %}
 
 {% block body %}
+<div class="searchForWord">
 <p class="title">Search for a word: </p>
-<form action="{{ url_for('word')}}" method="post">
-    <input type="text" name="searchForWord">
-    <input type="submit">
+<form class='form' action="{{ url_for('search')}}" method="post">
+    <div class="search-container">
+        <input class="wordSearch" type="text" name="searchForWord">
+        <input class="wordSubmit" type="submit" value="Search!">
+    </div>
 </form>
-<p class="title">Random Word: </p>
-{% for item in word %}
-<p class="wordName">{{item.hwi.hw}}</p>
-<p class="wordType">{{ item.fl }}</p>
-{% for def in item.shortdef %}
-<p class="wordDef">{{ def }}</p>
-{% endfor %}
-{% endfor %}
+</div>
+<p class="title" id="random">Random Word: </p>
+<div class="random-container">
+    {% for item in word %}
+    <p class="randomWord">{{item.hwi.hw}}</p>
+    <p class="randomType">{{ item.fl }}</p>
+    {% for def in item.shortdef %}
+    <p class="randomDef">{{ def }}</p>
+    {% endfor %}
+    {% endfor %}
+</div>
 {% endblock %}
