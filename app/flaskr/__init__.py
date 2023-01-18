@@ -48,7 +48,7 @@ def create_app(test_config=None):
             wordType = args['type']
         else:
             wordType = None
-        return render_template(checkValidWord(result), word=result, types=typesofWords(), search=search.capitalize(), type=wordType)
+        return render_template(checkValidWord(result), word=result, types=typesofWords(), search=search.lower(), type=wordType)
     
     @app.route('/types', methods=["GET", "POST"])
     def types():
