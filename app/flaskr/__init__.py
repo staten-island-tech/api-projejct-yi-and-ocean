@@ -30,15 +30,15 @@ def create_app(test_config=None):
     @app.route('/')
     def hello():
         return render_template('index.html', word=getWord(randomWord()))
-
+    
     @app.route('/search', methods =["GET", "POST"])
     def search():
         word=request.form['searchForWord']
         if word:
-            return redirect('/search/'+ word)
+            return redirect('/search/'+ word )
         else:
             return render_template('404.html')
-
+    
     @app.route('/search/<path:search>', methods =["GET", "POST"])
     def result(search):
         result = getWord(search)
@@ -48,12 +48,12 @@ def create_app(test_config=None):
             wordType = args['type']
         else:
             wordType = None
-        return render_template(checkValidWord(result), word=result, types=typesofWords(), search=search.lower(), type=wordType)
+        return render_template(checkValidWord(result), word=result, types=typesOfWords(), search=search.lower() , type = wordType)
     
-    @app.route('/types', methods=["GET", "POST"])
+    @app.route('/types', methods =["GET", "POST"])
     def types():
         wordType = request.form['typeSelector']
         word = session.get('word')
         return redirect ('/search/' + word + '?type=' + wordType)
-
+    
     return app

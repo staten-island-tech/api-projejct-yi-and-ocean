@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{ search.capitalize() }}{% endblock %}
+
+{% block body %}
+<div class="searching">
+    {% set subdirectory = search[0] %}
+    <p class="title">You are searching: {{ search.capitalize() }}</p>
+</div>
+
+<p class="title">Sort word by category :</p>
+<form class="form" action="{{ url_for('types') }}" method="post">
+    <div class="search-container">
+        <select class="wordSearch" name="typeSelector" id="types">
+            {% for type in types %}
+            <option class='select option' value="{{ type }}">{{ type }}</option>
+            {% endfor %}
+        </select>
+        <input class="wordSubmit" type="submit">
+    </div>
+</form>
+<a href="../search/{{search}}"><button class="reset select">Reset to None</button></a>
+<p class="subtitle">Currently sorting by: {{ type }}</p>
+
+{% if type in types %}
+
+<div class="flex-container">
+    {% for item in word %}
+
+    {% if type in item.fl %}
+    <div class="card">
+        <p class="wordName">{{item.hwi.hw}}</p>
+        <p class="wordType">{{ item.fl }}</p>
+        {% for def in item.shortdef %}
+        <p class="wordDef">{{ loop.index }}. {{ def }}</p>
+        {% endfor %}
+    </div>
+
+    {% endif %}
+
+    {% endfor %}
+</div>
+{% else %}
+<div class="flex-container">
+
+    {% for item in word %}
+    <div class="card">
+        <p class="wordName">{{item.hwi.hw}}</p>
+        <p class="wordType">{{ item.fl }}</p>
+        {% for def in item.shortdef %}
+        <p class="wordDef">{{ loop.index }}. {{ def }}</p>
+        {% endfor %}
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endif %}
+
+{% endblock %}
